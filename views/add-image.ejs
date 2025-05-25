@@ -12,7 +12,7 @@
     <!-- Carga el fichero partials/navbar.ejs -->
     <%- include('./partials/navbar') %>
 
-        <h1>Añadir una nueva imagen</h1>
+        <h1 class="container">Añadir una nueva imagen</h1>
         <form class="container" action="/new-image" method="post">
             <label for="title">Título: </label>
             <input type="text" name="title" id="title" maxlength="30" pattern="[A-Za-z0-9_ ]+" required>

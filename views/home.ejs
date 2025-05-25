@@ -11,25 +11,32 @@
 <body>
   <%- include('./partials/navbar') %>
 
-  <main class="container">
-    <% if(images.length === 0) { %>
-      <article>
-        <h2>Galería de Razas de Perros</h2>
-        <p>¡Añade una ahora desde el menú!</p>
-      </article>
-    <% } else { %>
-      <p>Tu galería tiene <strong><%= images.length %></strong> imagen<%= images.length > 1 ? 'es' : '' %>.</p>
+    <main class="container">
+      <h2>Galería de Razas de Perros</h2>
 
-      <section class="grid">
-        <% images.forEach(function(i) { %>
-          <article>
-            <h3><%= i.title %></h3>
-            <img src="<%= i.url %>" alt="<%= i.title %>" style="max-width: 100%; border-radius: 10px;">
-          </article>
-        <% }) %>
-      </section>
-    <% } %>
-  </main>
-</body>
+      <% if(images.length===0) { %>
+        <article>
+          <p>Todavía no hay imágenes en tu galería.</p>
+          <p>¡Añade una ahora desde el menú!</p>
+        </article>
+        <% } else { %>
+          <p>Tu galería tiene <strong>
+              <%= images.length %>
+            </strong> imagen<%= images.length> 1 ? 'es' : '' %>.</p>
 
-</html>
+          <section class="grid">
+            <% images.forEach(function(i) { %>
+              <article>
+                <img src="<%= i.url %>" alt="<%= i.title %>" style="max-width: 100%; border-radius: 10px;">
+                <h3>
+                  <%= i.title %>
+                </h3>
+                <p>
+                  <%= i.date %>
+                </p>
+              </article>
+              <% }) %>
+          </section>
+
+          <% } %>
+    </main>

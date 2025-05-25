@@ -12,9 +12,9 @@ router.get('/new-image', (req, res) => {
 });
 
 router.post('/new-image', (req, res) => {
-    const { title, url } = req.body;
-    images.push({ title, url });
-    console.log('Imagen añadida:', { title, url });
+    const { title, url, date } = req.body;
+    images.push({ title, url, date });
+    console.log('Imagen añadida:', { title, url, date });
     res.render('add-image.ejs', { message: 'La imagen se ha añadido correctamente' });
 });
 
