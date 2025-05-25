@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fototeca</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+  <%- include('./partials/navbar') %>
+
+  <main class="container">
+    <% if(images.length === 0) { %>
+      <article>
+        <h2>Todavía no hay imágenes en tu galería.</h2>
+        <p>¡Añade una ahora desde el menú!</p>
+      </article>
+    <% } else { %>
+      <p>Tu galería tiene <strong><%= images.length %></strong> imagen<%= images.length > 1 ? 'es' : '' %>.</p>
+
+      <section class="grid">
+        <% images.forEach(function(i) { %>
+          <article>
+            <h3><%= i.title %></h3>
+            <img src="<%= i.url %>" alt="<%= i.title %>" style="max-width: 100%; border-radius: 10px;">
+          </article>
+        <% }) %>
+      </section>
+    <% } %>
+  </main>
+</body>
+
+</html>
