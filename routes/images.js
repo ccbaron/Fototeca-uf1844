@@ -20,7 +20,7 @@ router.post('/new-image', (req, res) => {
 
 // Middleware para manejar errores 404
 router.use((req, res) => {
-    res.status(404).render('404.ejs', { message: 'Página no encontrada' });
+    res.status(404).render('404.ejs', { message: 'La página o recurso que buscas no existe o ha sido movido.' });
 });
 
 module.exports = router;
