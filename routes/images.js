@@ -18,5 +18,10 @@ router.post('/new-image', (req, res) => {
     res.render('add-image.ejs', { message: 'La imagen se ha añadido correctamente' });
 });
 
+// Middleware para manejar errores 404
+router.use((req, res) => {
+    res.status(404).render('404.ejs', { message: 'Página no encontrada' });
+});
+
 module.exports = router;
 
