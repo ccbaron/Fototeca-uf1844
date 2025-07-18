@@ -1,7 +1,20 @@
 const express = require('express');
 const router = express.Router(); // Creamos un "mini servidor" con sus propias rutas
+const fs = require('fs-extra'); // Para manejar archivos y directorios 
+const path = require('path');
 
-const images = [];  // Simula una base de datos en memoria
+const dataPath = path.join(__dirname, '../images.json'); // Ruta al archivo JSON donde guardaremos las imágenes
+
+// Cargar imágenes desde el archivo JSON al iniciar la aplicación
+let images = [];
+fs.readJson(dataPath)
+    .then(data => {
+        images = data;
+        console.log('Imágenes cargadas desde images.json');
+    })
+    .catch(() => {
+        console.log('No se pudo leer images.json, se usará un array vacío');
+    });
 
 router.get('/', (req, res) => {
     res.render('home.ejs', { images });  // Renderiza la vista y le pasa las imágenes
@@ -11,7 +24,7 @@ router.get('/new-image', (req, res) => {
     res.render('add-image.ejs', { message: undefined }); // Renderiza formulario vacío
 });
 
-router.post('/new-image', (req, res) => {
+router.post('/new-image', async (req, res) => {
     const { title, url, date } = req.body;
     console.log('Datos recibidos:', req.body);
 
@@ -75,11 +88,21 @@ router.post('/new-image', (req, res) => {
     images.push({ title, url, date });
     console.log('Imagen añadida:', { title, url, date });
 
+    try {
+        await fs.writeJson(dataPath, images, { spaces: 2 });
+        console.log('Imagen guardada en disco');
+        
+    } catch (err) {
+        console.error('Error al guardar en images.json:', err);
+        return res.render('add-image.ejs', {
+            message: 'La imagen fue añadida pero no se pudo guardar en disco.'
+        });
+    }
+
     res.render('add-image.ejs', {
         message: 'La imagen se ha añadido correctamente.'
     });
 });
-
 
 // Middleware para manejar errores 404
 router.use((req, res) => {
