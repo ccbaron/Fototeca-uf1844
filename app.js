@@ -8,7 +8,7 @@ app.set('views', path.join(__dirname, 'views'));           // Define dónde est�
 
 app.use(express.static('public'));                         // Servir archivos estáticos (CSS, imágenes, etc.)
 app.use(express.urlencoded({ extended: true }));           // Leer datos de formularios HTML (req.body)
-app.use(express.json());                                   // Leer datos en formato JSON (por si los necesitas en el futuro)
+app.use(express.json());                                   // Leer datos en formato JSON
 
 app.use('/', imagesRoutes);                                // Usa las rutas que definimos en routes/images.js
 
