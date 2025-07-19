@@ -48,5 +48,35 @@
       "#b7c0a6",
       "#718d50"
     ]
+  },
+  {
+    "title": "Leopardo",
+    "url": " https://animals.sandiegozoo.org/sites/default/files/2016-09/animals_hero_leopard_0.jpg",
+    "date": "2025-07-19",
+    "colors": [
+      "#675540",
+      "#c89a65",
+      "#181d16"
+    ]
+  },
+  {
+    "title": "Leon",
+    "url": "https://s1.significados.com/foto/leon-animal-salvaje-ok.jpg",
+    "date": "2025-07-09",
+    "colors": [
+      "#444a13",
+      "#d2a764",
+      "#958433"
+    ]
+  },
+  {
+    "title": "Osos Polares",
+    "url": "https://efeverde.com/wp-content/uploads/2022/01/osos-polar-pareja-cachorros.jpg",
+    "date": "2025-07-19",
+    "colors": [
+      "#625f41",
+      "#cecac3",
+      "#171b0a"
+    ]
   }
 ]
