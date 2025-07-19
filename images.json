@@ -2,6 +2,51 @@
   {
     "title": "Zorro",
     "url": "https://randomfox.ca/images/89.jpg",
-    "date": "2025-07-18"
+    "date": "2025-07-19",
+    "colors": [
+      "#655028",
+      "#d2ae7b",
+      "#161509"
+    ]
+  },
+  {
+    "title": "Oso Panda",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/960px-Grosser_Panda.JPG",
+    "date": "2025-07-19",
+    "colors": [
+      "#3f473a",
+      "#dadccc",
+      "#9ab59e"
+    ]
+  },
+  {
+    "title": "Elefantes",
+    "url": "https://files.worldwildlife.org/wwfcmsprod/images/elephants_at_water_hole_WW2122503_Anup_Shah/story_full_width/7ozyekgso2_Medium_WW2122503.jpg",
+    "date": "2025-07-19",
+    "colors": [
+      "#4d443e",
+      "#d4dbed",
+      "#809fe3"
+    ]
+  },
+  {
+    "title": "Ardillas",
+    "url": "https://i.pinimg.com/736x/bc/e9/94/bce9943e98e2fafba3a5cc88058e5231.jpg",
+    "date": "2025-07-19",
+    "colors": [
+      "#63502f",
+      "#c69c75",
+      "#1c180b"
+    ]
+  },
+  {
+    "title": "Koalas",
+    "url": "https://naukas.com/fx/uploads/2018/12/koalas-640x400.jpg",
+    "date": "2025-07-19",
+    "colors": [
+      "#31382c",
+      "#b7c0a6",
+      "#718d50"
+    ]
   }
 ]
