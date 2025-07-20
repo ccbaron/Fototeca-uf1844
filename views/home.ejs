@@ -13,7 +13,7 @@
   <%- include('./partials/navbar') %>
 
     <main class="container">
-      <h2>Galería de Animales Salvajes</h2>
+      <h2>Galería Inteligente de Animales Salvajes</h2>
 
       <% if(images.length===0) { %>
         <article>
@@ -27,7 +27,7 @@
 
           <section class="grid">
             <% images.forEach(function(i) { %>
-              <article>
+              <article class="image-card">
                 <img src="<%= i.url %>" alt="<%= i.title %>" style="max-width: 100%; border-radius: 10px;">
                 <h3>
                   <%= i.title %>

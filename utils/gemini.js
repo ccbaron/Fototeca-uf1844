@@ -3,7 +3,7 @@ const axios = require("axios");
 const GEMINI_API_KEY = "AIzaSyCfJhXZscbovHFNFTVdt4Mr-WDSzRUAG9o"; // ✅ reemplázala si hace falta
 
 async function generarDescripcionDesdeTexto(titulo) {
-  const prompt = `Describe en máximo 5 palabras qué tipo de animal es un: "${titulo}"`;
+  const prompt = `Describe en una frase de máximo 7 palabras el siguiente animal: "${titulo}"`;
 
   const body = {
     contents: [

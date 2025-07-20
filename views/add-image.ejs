@@ -14,8 +14,13 @@
 
         <h1 class="container">Añadir una nueva imagen</h1>
         <form class="container" action="/new-image" method="post">
-            <label for="title">Título: </label>
+
+            <label for="title">Título:</label>
             <input type="text" name="title" id="title" maxlength="30" pattern="[A-Za-z0-9_ ]+" required>
+            <small style="color: #555; font-style: italic;">
+                La descripción será generada automáticamente por IA según el título ingresado.
+            </small>
+
 
             <label for="url">URL de la imagen: </label>
             <input type="url" name="url" id="url" required>

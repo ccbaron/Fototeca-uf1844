@@ -7,3 +7,33 @@
 .grid article {
     text-align: center;
 }
+
+body {
+    background-color: #f0f0f034;
+    /* gris claro */
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.image-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Estilo de los botones del navbar */
+.nav-button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin-left: 0.5rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+    border-color: #aaa;
+}

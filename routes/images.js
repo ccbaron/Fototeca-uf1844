@@ -109,24 +109,24 @@ router.post('/new-image', async (req, res) => {
             responseType: 'arraybuffer'
         });
 
-        console.log('📦 Imagen descargada. Guardando temporalmente...');
+        console.log('Imagen descargada. Guardando temporalmente...');
         await fs.writeFile(filePath, response.data);
 
-        console.log('🎨 Analizando colores...');
+        console.log('Analizando colores...');
         const colors = await getColors(filePath);
         const hexColors = colors.slice(0, 3).map(c => c.hex());
-        console.log('✅ Colores:', hexColors);
+        console.log('Colores:', hexColors);
 
-        // ✅ Ahora sí, generar descripción desde imagen local
+        // Generaramos la descripción desde el título de la imagen
         const { generarDescripcionDesdeTexto } = require('../utils/gemini');
         const descripcion = await generarDescripcionDesdeTexto(title);
-        console.log('🧠 Descripción:', descripcion);
+        console.log('Descripción:', descripcion);
 
-        // Borrar imagen temporal
+        // Borramos imagen de archivo temporal
         await fs.remove(filePath);
-        console.log('🧹 Imagen temporal eliminada');
+        console.log('Imagen temporal eliminada');
 
-        // Guardar datos en JSON
+        // Guardamos datos en un archivo JSON
         const newImage = { title, url, date, colors: hexColors, description: descripcion };
         images.push(newImage);
         await fs.writeJson(dataPath, images, { spaces: 2 });
@@ -138,8 +138,8 @@ router.post('/new-image', async (req, res) => {
 
 
     } catch (error) {
-        console.error('❌ Error:', error.message);
-        console.error(error); // 👈 esto nos da todo el stack
+        console.error('Error:', error.message);
+        console.error(error); // Gestion de errores
 
         res.render('add-image.ejs', {
             message: 'La imagen fue añadida, pero no se pudo procesar correctamente.',
