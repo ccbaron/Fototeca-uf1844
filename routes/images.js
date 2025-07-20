@@ -22,8 +22,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new-image', (req, res) => {
-    res.render('add-image.ejs', { message: undefined }); // Renderiza formulario vacío
+    res.render('add-image.ejs', { message: undefined, description: '' });
 });
+
+
 
 router.post('/new-image', async (req, res) => {
     const { title, url, date } = req.body;
@@ -42,14 +44,16 @@ router.post('/new-image', async (req, res) => {
         new URL(url); // Lanza error si la URL no es válida
     } catch {
         return res.render('add-image.ejs', {
-            message: 'La URL no es válida.'
+            message: 'La URL no es válida.',
+            description: ''
         });
     }
 
     // Validar fecha: debe estar presente y ser válida
     if (!date) {
         return res.render('add-image.ejs', {
-            message: 'La fecha es obligatoria.'
+            message: 'La fecha es obligatoria.',
+            description: ''
         });
     }
 
@@ -57,7 +61,8 @@ router.post('/new-image', async (req, res) => {
     const parsedDate = new Date(date);
     if (isNaN(parsedDate.getTime())) {
         return res.render('add-image.ejs', {
-            message: 'Formato de fecha inválido.'
+            message: 'Formato de fecha inválido.',
+            description: ''
         });
     }
 
@@ -96,50 +101,54 @@ router.post('/new-image', async (req, res) => {
     const filePath = path.join(tempPath, fileName); // Ruta completa del archivo temporal
 
     try {
-
         console.log('Descargando imagen desde:', url);
 
         const response = await axios({
             method: 'GET',
             url,
-            responseType: 'arraybuffer' // Para manejar la imagen como un buffer
+            responseType: 'arraybuffer'
         });
 
         console.log('📦 Imagen descargada. Guardando temporalmente...');
+        await fs.writeFile(filePath, response.data);
 
-        await fs.writeFile(filePath, response.data); // Guardar la imagen en el directorio temporal
-
-        console.log('🎨 Analizando colores con get-image-colors...');
-
+        console.log('🎨 Analizando colores...');
         const colors = await getColors(filePath);
-        // Extraemos los primeros 3 colores en HEX
         const hexColors = colors.slice(0, 3).map(c => c.hex());
+        console.log('✅ Colores:', hexColors);
 
-        console.log('✅ Colores extraídos:', hexColors);
+        // ✅ Ahora sí, generar descripción desde imagen local
+        const { generarDescripcionDesdeTexto } = require('../utils/gemini');
+        const descripcion = await generarDescripcionDesdeTexto(title);
+        console.log('🧠 Descripción:', descripcion);
 
-        await fs.remove(filePath); // Eliminar el archivo temporal después de extraer el color
+        // Borrar imagen temporal
+        await fs.remove(filePath);
         console.log('🧹 Imagen temporal eliminada');
 
-        // Guardamos la nueva imagen con sus datos
-        const newImage = { title, url, date, colors: hexColors };
-        images.push(newImage); // Añadimos la nueva imagen al array en memoria
-        console.log('💾 Imagen añadida al array:', newImage);
-
-        await fs.writeJson(dataPath, images, { spaces: 2 }); // Guardamos el array actualizado en el archivo JSON
-        console.log('📁 Imagen guardada en images.json');
+        // Guardar datos en JSON
+        const newImage = { title, url, date, colors: hexColors, description: descripcion };
+        images.push(newImage);
+        await fs.writeJson(dataPath, images, { spaces: 2 });
 
         res.render('add-image.ejs', {
             message: 'La imagen se ha añadido correctamente.',
+            description: descripcion
         });
+
 
     } catch (error) {
-        console.error('Error al analizar color:', error.message);
-        console.error(error.stack);
+        console.error('❌ Error:', error.message);
+        console.error(error); // 👈 esto nos da todo el stack
 
         res.render('add-image.ejs', {
-            message: 'La imagen fue añadida, pero no se pude extraer el color.'
+            message: 'La imagen fue añadida, pero no se pudo procesar correctamente.',
+            description: ''
+
         });
     }
+
+
 });
 // Middleware para manejar errores 404
 router.use((req, res) => {

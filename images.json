@@ -78,5 +78,27 @@
       "#cecac3",
       "#171b0a"
     ]
+  },
+  {
+    "title": "Hipopotamo",
+    "url": "https://img.freepik.com/foto-gratis/familia-hipopotamos-parque-nacional-kenia-africa_167946-43.jpg",
+    "date": "2025-07-07",
+    "colors": [
+      "#a19887",
+      "#33302f",
+      "#533b37"
+    ],
+    "description": "Mamífero grande semiacuático herbívoro."
+  },
+  {
+    "title": "Mapache",
+    "url": "https://www.fundacionaquae.org/wp-content/uploads/2018/10/proteger-a-los-animales.jpg",
+    "date": "2025-07-07",
+    "colors": [
+      "#6e613f",
+      "#cdb8a5",
+      "#1b1609"
+    ],
+    "description": "Mamífero omnívoro arborícola nocturno."
   }
 ]
