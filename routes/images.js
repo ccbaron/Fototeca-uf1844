@@ -17,9 +17,20 @@ fs.readJson(dataPath)
         console.log('No se pudo leer images.json, se usará un array vacío');
     });
 
+    // Ruta para manejar las imágenes
 router.get('/', (req, res) => {
-    res.render('home.ejs', { images });  // Renderiza la vista y le pasa las imágenes
+    const search = req.query.search?.trim().toLowerCase() || '';
+
+    // Filtrar las imágenes si hay una búsqueda
+    const filteredImages = search
+        ? images.filter(img =>
+            img.title.toLowerCase().includes(search)
+        )
+        : images;
+
+    res.render('home.ejs', { images: filteredImages, search });
 });
+
 
 router.get('/new-image', (req, res) => {
     res.render('add-image.ejs', { message: undefined, description: '' });

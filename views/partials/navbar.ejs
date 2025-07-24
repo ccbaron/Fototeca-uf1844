@@ -1,10 +1,17 @@
 <nav class="navbar container">
-    <ul>
-      <li><strong>Animales Increíbles</strong></li>
-    </ul>
-    <ul>
-      <li><a href="/" class="nav-button">Home</a></li>
-      <li><a href="/new-image" class="nav-button">Añadir Imagen</a></li>
-    </ul>
-  </nav>
-  
+  <ul>
+    <li><strong>Animales Increíbles</strong></li>
+  </ul>
+  <ul style="display: flex; align-items: center; gap: 0.5rem;">
+    <li><a href="/" class="nav-button">Home</a></li>
+    <li><a href="/new-image" class="nav-button">Añadir Imagen</a></li>
+    <li>
+      <form action="/" method="GET" style="display: flex; align-items: center; gap: 0.5rem;">
+        <input type="text" name="search" placeholder="Buscar..."
+          value="<%= typeof search !== 'undefined' ? search : '' %>" class="nav-button"
+          style="width: 140px; padding-top: 0.4rem; padding-bottom: 0.4rem;">
+        <a href="#" onclick="this.closest('form').submit();" class="nav-button">Buscar</a>
+      </form>
+    </li>
+  </ul>
+</nav>
