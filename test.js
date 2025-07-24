@@ -1,12 +1,13 @@
 const fs = require("fs");
 const axios = require("axios");
 
-const GEMINI_API_KEY = "AIzaSyCfJhXZscbovHFNFTVdt4Mr-WDSzRUAG9o"; // Asegúrate que sea la del proyecto correcto
+const GEMINI_API_KEY = "AIzaSyCfJhXZscbovHFNFTVdt4Mr-WDSzRUAG9o"; // Token de la API de Gemini
 
 async function testGeminiV1() {
-  const imageBuffer = fs.readFileSync("./hipopotamo.jpg"); // Asegúrate de que exista
-  const base64Image = imageBuffer.toString("base64");
-
+  const imageBuffer = fs.readFileSync("./hipopotamo.jpg"); // Revisamos si la imagen existe en el directorio y la intentamos leer como un buffer
+  
+  const base64Image = imageBuffer.toString("base64"); // Convertimos el buffer de la imagen a una cadena en base64
+ 
   const prompt = "Describe brevemente esta imagen:";
 
   const body = {
@@ -34,9 +35,9 @@ async function testGeminiV1() {
     );
 
     const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text;
-    console.log("✅ Descripción generada:", text);
+    console.log(" Descripción generada:", text);
   } catch (err) {
-    console.error("❌ Error:", err.response?.data || err.message);
+    console.error("Error:", err.response?.data || err.message);
   }
 }
 

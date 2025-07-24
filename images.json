@@ -121,14 +121,25 @@
     "description": "Gigantes acuáticos herbívoros africanos."
   },
   {
-    "title": "Perro",
-    "url": "https://random.dog/32467-30239-4163.jpg",
-    "date": "2025-07-17",
+    "title": "Flamencos",
+    "url": "https://quo.eldiario.es/imagenes_quo/es.h-cdn.co/quoes/images/naturaleza/7-impactantes-imagenes-de-animales-salvajes-en-libertad/animales4/1398204-1-esl-ES/animales4.jpg",
+    "date": "2025-07-07",
     "colors": [
-      "#736c11",
-      "#ded5c5",
-      "#272204"
+      "#0d0b0b",
+      "#d8543f",
+      "#f4d7d8"
     ],
-    "description": "Amigable, leal, compañero canino."
+    "description": "Aves zancudas rosadas, filtradoras de alimento."
+  },
+  {
+    "title": "lemur",
+    "url": "https://cdn.pixabay.com/photo/2022/09/13/13/47/animal-7451969_640.jpg",
+    "date": "2025-07-07",
+    "colors": [
+      "#2a2a29",
+      "#c8c4c4",
+      "#7f7a78"
+    ],
+    "description": "Primate arborícola de Madagascar."
   }
 ]

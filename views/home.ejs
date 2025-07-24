@@ -30,11 +30,11 @@
               <article class="image-card">
                 <img src="<%= i.url %>" alt="<%= i.title %>" style="max-width: 100%; border-radius: 10px;">
                 <h3>
-                  <%= i.title %>
+                  <%= i.title.charAt(0).toUpperCase() + i.title.slice(1) %>
                 </h3>
 
                 <% if (i.description) { %>
-                  <p style="font-style: italic; color: #666; margin-top: -0.5rem;">
+                  <p style="font-style: italic; color: #7c7b7b; margin-top: -0.5rem;">
                     <%= i.description %>
                   </p>
                   <% } %>

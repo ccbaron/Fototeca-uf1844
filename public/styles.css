@@ -1,3 +1,4 @@
+/* Estilo de las tarjetas de imagen */
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -7,7 +8,7 @@
 .grid article {
     text-align: center;
 }
-
+/* Estilo del fondo */
 body {
     background-color: #f0f0f034; /* gris claro */
     min-height: 100vh;
@@ -15,7 +16,7 @@ body {
     font-family: sans-serif;
     color: #ffffff;
 }
-
+/* Estilo de las tarjetas de imagen - hover */
 .image-card:hover {
     transform: translateY(-4px);
 }
@@ -32,7 +33,7 @@ body {
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
+/* Estilo de los botones del navbar al pasar el ratón */
 .nav-button:hover {
     background-color: #555;
     transform: scale(1.05);
@@ -52,7 +53,7 @@ body {
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
+/* Botón de envío del formulario al pasar el ratón */
 .form-submit:hover {
     background-color: #555;
     transform: scale(1.02);

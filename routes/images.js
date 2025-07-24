@@ -70,13 +70,13 @@ router.post('/new-image', async (req, res) => {
     const today = new Date();
     const minDate = new Date('1900-01-01');
 
-    if (parsedDate > today) { // Verifica que la fecha no sea posterior a hoy
+    if (parsedDate > today) { // Verificamos que la fecha no sea posterior a hoy
         return res.render('add-image.ejs', {
             message: 'La fecha no puede ser posterior a hoy.'
         });
     }
 
-    if (parsedDate < minDate) { // Verifica que la fecha no sea anterior al 1 de enero de 1900
+    if (parsedDate < minDate) { // Verificamos que la fecha no sea anterior al 1 de enero de 1900
         return res.render('add-image.ejs', {
             message: 'La fecha no puede ser anterior al año 1900.'
         });
