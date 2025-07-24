@@ -9,10 +9,11 @@
 }
 
 body {
-    background-color: #f0f0f034;
-    /* gris claro */
+    background-color: #f0f0f034; /* gris claro */
+    min-height: 100vh;
     margin: 0;
     font-family: sans-serif;
+    color: #ffffff;
 }
 
 .image-card:hover {
@@ -35,5 +36,25 @@ body {
 .nav-button:hover {
     background-color: #555;
     transform: scale(1.05);
+    border-color: #aaa;
+}
+
+/* Botón de envío del formulario */
+.form-submit {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1.2rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.form-submit:hover {
+    background-color: #555;
+    transform: scale(1.02);
     border-color: #aaa;
 }

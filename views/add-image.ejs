@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir una nueva imagen</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
@@ -13,11 +14,11 @@
     <%- include('./partials/navbar') %>
 
         <h1 class="container">Añadir una nueva imagen</h1>
-        <form class="container" action="/new-image" method="post">
+        <form class="container form-card" action="/new-image" method="post">
 
             <label for="title">Título:</label>
             <input type="text" name="title" id="title" maxlength="30" pattern="[A-Za-z0-9_ ]+" required>
-            <small style="color: #555; font-style: italic;">
+            <small style="color: #b4b1b1; font-style: italic;">
                 La descripción será generada automáticamente por IA según el título ingresado.
             </small>
 
@@ -29,7 +30,7 @@
             <input type="date" name="date" id="date" required min="1900-01-01"
                 max="<%= new Date().toISOString().split('T')[0] %>">
 
-            <input type="submit" value="Añadir Foto">
+            <button type="submit" class="form-submit">Añadir Foto</button>
         </form>
 
         <% if (message) { %>
