@@ -32,7 +32,7 @@ router.post('/new-image', async (req, res) => {
     console.log('Datos recibidos:', req.body);
 
     // Validar título: solo letras, números, espacios y guión bajo
-    const titleRegex = /^[A-Za-z0-9_ ]{1,30}$/; // Expresión regular para validar el título
+    const titleRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9_ ]{1,30}$/; // Expresión regular para validar el título
     if (!titleRegex.test(title)) { // Verifica que el título cumpla con el formato
         return res.render('add-image.ejs', {
             message: 'El título debe tener máximo 30 caracteres y solo puede contener letras, números, espacios o guiones bajos (_).'
