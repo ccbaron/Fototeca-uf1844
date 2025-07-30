@@ -31,19 +31,19 @@ router.get('/', (req, res) => {
     res.render('home.ejs', { images: filteredImages, search });
 });
 
-
+// Ruta para mostrar el formulario de añadir una nueva imagen
 router.get('/new-image', (req, res) => {
     res.render('add-image.ejs', { message: undefined, description: '' });
 });
 
 
-
+// Ruta para procesar el formulario de añadir una nueva imagen
 router.post('/new-image', async (req, res) => {
     const { title, url, date } = req.body;
     console.log('Datos recibidos:', req.body);
 
     // Validar título: solo letras, números, espacios y guión bajo
-    const titleRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9_ ]{1,30}$/; // Expresión regular para validar el título
+    const titleRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9_ ]{1,30}$/; // Expresión regular para validar el título incluyendo acentos y ñ
     if (!titleRegex.test(title)) { // Verifica que el título cumpla con el formato
         return res.render('add-image.ejs', {
             message: 'El título debe tener máximo 30 caracteres y solo puede contener letras, números, espacios o guiones bajos (_).'
