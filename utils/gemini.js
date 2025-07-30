@@ -2,7 +2,9 @@
 const axios = require("axios");
 // Importamos axios para realizar solicitudes HTTP
 
-const GEMINI_API_KEY = "AIzaSyCfJhXZscbovHFNFTVdt4Mr-WDSzRUAG9o"; // API Key de Gemini
+require("dotenv").config(); // Carga variables desde .env
+
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // API Key de Gemini
 
 async function generarDescripcionDesdeTexto(titulo) {
   const prompt = `Describe en una frase de máximo 7 palabras el siguiente animal: "${titulo}"`;
